@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct FruitListView: View {
     let fruit = fruitData
+
+    @State private var isSheetShowing = false
 
     var body: some View {
         NavigationView  {
@@ -22,12 +24,21 @@ struct ContentView: View {
             }
             .listStyle(.plain)
             .navigationTitle("Fruits")
+            .navigationBarItems(trailing: Button(action: {
+                isSheetShowing = true
+            }) {
+                Image(systemName: "slider.horizontal.3")
+            })
+            .sheet(isPresented: $isSheetShowing) {
+                SettingsView()
+            }
         } //: Navigation
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FruitListView()
     }
 }

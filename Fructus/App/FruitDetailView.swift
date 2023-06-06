@@ -30,7 +30,7 @@ struct FruitDetailView: View {
                             .multilineTextAlignment(.leading)
                         
                         // 4
-                        
+                        FruitNutrientsView(fruit: fruit)
                         
                         // 5
                         Text("Learn more about \(fruit.title)".uppercased())
@@ -53,6 +53,7 @@ struct FruitDetailView: View {
             } //: Scroll
             .edgesIgnoringSafeArea(.top)
         } //: Navigation
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
